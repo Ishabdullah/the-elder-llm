@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints
+
+# Model files (large)
+*.bin
+*.safetensors
+*.h5
+*.pt
+*.pth
+the-elder-lora/
+the-elder-merged/
+the-elder-output/
+*.gguf.tmp
+the-elder-f16.gguf
+
+# llama.cpp (downloaded during conversion)
+llama.cpp/
+
+# Secrets
+.env
+*.token
+*.key
+secrets.txt
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Keep releases folder but ignore its contents initially
+# releases/*
+# !releases/.gitkeep

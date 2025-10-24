@@ -1,0 +1,71 @@
+# The Elder LLM - Training Configuration
+
+model:
+  base_model: "TinyLlama/TinyLlama-1.1B-Chat-v1.0"  # Optimized for Colab free tier
+  model_type: "causal_lm"
+  load_in_8bit: false
+  load_in_4bit: true  # Use 4-bit quantization for memory efficiency
+
+lora_config:
+  r: 16  # LoRA rank
+  lora_alpha: 32  # LoRA alpha parameter
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+  lora_dropout: 0.05
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+training:
+  output_dir: "./the-elder-output"
+  num_train_epochs: 3
+  per_device_train_batch_size: 4
+  gradient_accumulation_steps: 4  # Effective batch size = 16
+  learning_rate: 2.0e-4
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.03
+  weight_decay: 0.01
+  logging_steps: 10
+  save_strategy: "steps"
+  save_steps: 500
+  save_total_limit: 3
+  fp16: true  # Use mixed precision for speed
+  optim: "paged_adamw_32bit"
+  max_grad_norm: 0.3
+  max_steps: -1
+  group_by_length: true
+
+dataset:
+  dataset_path: "data/the_elder_dataset.jsonl"
+  max_seq_length: 512
+  dataset_text_field: "text"
+
+model_card:
+  model_name: "The_Elder"
+  author: "Ishabdullah"
+  description: "A wise philosophical guide trained on Bushido, Stoic, and Native American wisdom traditions"
+  license: "apache-2.0"
+  language: "en"
+  tags:
+    - philosophy
+    - wisdom
+    - coaching
+    - stoicism
+    - bushido
+    - native-american-wisdom
+    - conversational-ai
+
+quantization:
+  method: "gguf"
+  quant_type: "Q4_K_M"  # 4-bit K-quant, medium quality
+  output_name: "The_Elder.gguf"
+
+huggingface:
+  repo_id: "Ishabdullah/The_Elder"
+  private: false
+  push_to_hub: true

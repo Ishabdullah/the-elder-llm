@@ -42,6 +42,7 @@ llama.cpp/
 *.token
 *.key
 secrets.txt
+*_LOCAL.ipynb
 
 # OS
 .DS_Store

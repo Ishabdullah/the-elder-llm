@@ -57,3 +57,4 @@ temp/
 # Keep releases folder but ignore its contents initially
 # releases/*
 # !releases/.gitkeep
+*_READY.ipynb

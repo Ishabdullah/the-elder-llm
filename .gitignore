@@ -58,3 +58,5 @@ temp/
 # releases/*
 # !releases/.gitkeep
 *_READY.ipynb
+Elder_V2_AutoTrain.ipynb
+THE-ELDER-FINETUNING-READY.md
